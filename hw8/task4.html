@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Задача 4</h1>
+	<p>
+	Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+		•	починаються на букву «А»;
+		•	перша і остання літери співпадають;
+		•	складаються з більше ніш 5 символів;
+	</p>
+	<script>
+		let carIdNumber = ["ce4543aa", "aa8754aa", "ab5486ca", "ce3674cc", "aa4562ba" ]
+		function getCarNumStartsWithA(idNum) {
+			let counter = 0
+			for (let i = 0; i < idNum.length; i++) {
+				if (idNum[i][0] === 'a') counter++
+			}
+			return counter
+		}
+		function getSameFirstAndLastDigits(idNum) {
+			let counter = 0
+			for (let i = 0; i < idNum.length; i++) {
+				if (idNum[i][0] === idNum[i][idNum[i].length - 1])
+				counter++
+			}
+			return counter
+		}
+		function getCarNumWithMoreThan5Digits(idNum) {
+			let moreThan5 = 0
+			for (let i = 0; i < idNum.length; i++) {
+				if (idNum[i].length>5)moreThan5++
+			}
+			return moreThan5
+		}
+		let carNumStartsWithA = getCarNumStartsWithA(carIdNumber)
+		let sameFirstAndLastDigits = getSameFirstAndLastDigits(carIdNumber)
+		let carNumWithMoreThan5Digits = getCarNumWithMoreThan5Digits(carIdNumber)
+
+		document.write(`
+		${carNumStartsWithA} номери починаються на букву «А»<br>
+		В ${sameFirstAndLastDigits} номерів перша і остання літери співпадають<br>
+		${carNumWithMoreThan5Digits} номерів складаються з більше ніш 5 символів
+		`)
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Задача 7</h1>
+	<p>
+		Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+			1.за весь рік;
+			2.у першій половині року;
+			3.у другій половині року;
+			4.за літо;
+			5.за ІІ квартал;
+			6.за парні місяці (з парними номерами);
+			7.за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+
+	</p>
+	<script>
+		let reciepts = [1800,1500,1652,1444,1222,1666,1587,2587,1547,1895,1457,1536]
+		function getYearSum(reciepts) {
+			let yearSum = 0
+			for (let monthNumber = 0; monthNumber < reciepts.length; monthNumber++) {
+				yearSum+=reciepts[monthNumber]
+			}
+			return yearSum
+		}
+		function getFirstHalfYearSum(reciepts) {
+			let counter = 0
+			for (let monthNumber = 0; monthNumber < reciepts.length; monthNumber++) {
+				if (monthNumber < 6) 
+				counter+=reciepts[monthNumber]
+			}
+			return counter
+		}
+		function getSecondHalfYearSum(reciepts) {
+			let counter = 0
+			for (let monthNumber = 0; monthNumber < reciepts.length; monthNumber++) {
+				if (monthNumber>5)
+				counter+=reciepts[monthNumber]
+			}
+			return counter
+		}
+		function getSummerMonthsSum(reciepts) {
+			let counter = 0
+			for (let monthNumber = 0; monthNumber < reciepts.length; monthNumber++) {
+				if (monthNumber > 5 && monthNumber < 9)
+				counter+=reciepts[monthNumber]
+			}
+			return counter
+		}
+		function getSecondQuarterSum(reciepts) {
+			let counter = 0
+			for (let monthNumber = 1; monthNumber <= reciepts.length; monthNumber++) {
+				if (monthNumber > 3 && monthNumber < 7)
+				counter+=reciepts[monthNumber]
+			}
+			return counter
+		}
+		function getEvenMonthsSum(reciepts) {
+			let counter = 0
+			for (let monthNumber = 0; monthNumber < reciepts.length; monthNumber++) {
+				if (reciepts[monthNumber] % 2 === 0) 
+				counter+=reciepts[monthNumber]
+			}
+			return counter
+		}
+		function getFirstMonthOfSeasonSum(reciepts) {
+			let counter = 0
+			for (let monthNumber = 2; monthNumber < reciepts.length; monthNumber+=3) {
+				counter+=reciepts[monthNumber]
+			}
+			return counter
+		}
+		let yearRecieptsSum = getYearSum(reciepts)
+		let firstHalfYearSum = getFirstHalfYearSum(reciepts)
+		let secondHalfYearSum = getSecondHalfYearSum(reciepts)
+		let summerMonthsSum = getSummerMonthsSum(reciepts)
+		let secondQuarterSum = getSecondQuarterSum(reciepts)
+		let evenMonthsSum = getEvenMonthsSum(reciepts)
+		let firstMonthOfSeasonSum = getFirstMonthOfSeasonSum(reciepts)
+		document.write(`
+					Сумарна кількість грошей:<br>
+					за рік = ${yearRecieptsSum}<br>
+					у першій половині року = ${firstHalfYearSum}<br>
+					у другій половині року = ${secondHalfYearSum}<br>
+					за літо = ${summerMonthsSum}<br>
+					за ІІ квартал = ${secondQuarterSum}<br>
+					за парні місяці (з парними номерами) = ${evenMonthsSum}<br>
+					за місяці, які є початковими у сезоні (весна, літо, осінь, зима) = ${firstMonthOfSeasonSum}
+		`)
+	</script>
+</body>
+
+</html>

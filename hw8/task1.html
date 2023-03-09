@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Задача 1</h1>
+	<p>
+	Дано масив, який містить оцінки з К предметів. 
+	Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), 
+	хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+	</p>
+	<script>
+		const subjectsNumber = parseInt(prompt(`Введіть кількість предметів`))
+		
+		function getScoresArray(subjects) {
+			let score = []
+			for (let i = 0; i < subjects; i++) {
+				let subjectsScores = parseInt(prompt(`Введіть ${i+1} оцінку`))
+				score.push(subjectsScores)
+			}
+			return score
+		}
+		function getAverageScore(score) {
+			let sum = 0
+			for (let i = 0; i < score.length; i++) {
+				sum += score[i]
+			}
+			return sum / score.length
+		}
+		
+		function getStudentsGrades(scoresArr) {
+			let minScore = scoresArr[0]
+			for (let i = 0; i < scoresArr.length; i++) {
+				if (scoresArr[i] < minScore) minScore = scoresArr[i]
+			}
+			switch (minScore) {
+				case 1:
+				case 2: return 'двійочник '
+				case 3:	return 'трійочник '
+				case 4: return 'хорошист '
+				case 5:	return 'відмінник '
+				default:
+					return  'error'
+					}
+		}
+		let scoresArr = getScoresArray(subjectsNumber)
+		let averageScore = getAverageScore(scoresArr)
+		let studentsGrades = getStudentsGrades(scoresArr)
+		document.write(`Середня оцінка = ${averageScore}, ви ${studentsGrades}`)
+	</script>
+</body>
+
+</html>
+

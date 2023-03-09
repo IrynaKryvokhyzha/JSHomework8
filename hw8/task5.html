@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Задача 5.</h1>
+	<p>
+		Дано послідовність оцінок учня. Підрахувати кількість:
+		1)	двійок
+		2)	кількість хороших оцінок (добре, відмінно);
+		3)	кількість оцінок, які нижче середнього.
+	</p>
+	<script>
+		let studentGrades = [2,3,5,4,2,1,5,4,1,2,3,2,5]
+		function getAmountOf2(grades) {
+			let counterOf2 = 0
+			for (let i = 0; i < grades.length; i++) {
+				if (grades[i] === 2)
+				counterOf2++
+			}
+			return counterOf2
+		}
+		function getAmountOfGoodGrades(grades) {
+			let goodGrCounter = 0
+			for (let i = 0; i < grades.length; i++) {
+				if (grades[i] > 3) 
+				goodGrCounter++
+			}
+			return goodGrCounter
+		}
+		function getLowerMiddleGrades(grades) {
+			let counter = 0
+			for (let i = 0; i < grades.length; i++) {
+				if (grades[i] < 3)
+				counter++
+			}
+			return counter
+		}
+
+		let amountOf2 = getAmountOf2(studentGrades)
+		let amountOfGoodGrades = getAmountOfGoodGrades(studentGrades)
+		let lowerMiddleGrades = getLowerMiddleGrades(studentGrades)
+
+		document.write(`
+		Кількість двійок = ${amountOf2}<br>
+		Кількість хороших оцінок (добре, відмінно) = ${amountOfGoodGrades}<br>
+		Кількість оцінок, які нижче середнього = ${lowerMiddleGrades}
+		`)
+	</script>
+</body>
+
+</html>

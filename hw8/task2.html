@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Задача 2</h1>
+	<p>
+		Дано масив, який зберігає кількість відвідувачів магазину протягом тижня (7days). Вивести на екран:
+				номери днів, протягом яких кількість відвідувачів була меншою за 20;
+				номери днів, коли кількість відвідувачів була мінімальною;
+				номери днів, коли кількість відвідувачів була максимальною;
+				загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+	</p>
+	<script>
+		let weekVisitorsArr = [44, 55, 77, 11, 88, 80, 38]
+		function getDayNumWithUpTo20Visitors(weekVisitorsArr) {
+			const daysUpTo20Visitors = []
+			for (let i = 0; i < weekVisitorsArr.length; i++) {
+				if (weekVisitorsArr[i]<20) 
+				daysUpTo20Visitors.push(i+1)
+			}
+			return daysUpTo20Visitors
+		}
+		function getNumWithMinVisitors(weekVisitorsArr) {
+			let minVisitorsNum = weekVisitorsArr[0]
+			for (let i = 1; i < weekVisitorsArr.length; i++) {
+				if (weekVisitorsArr[i]<minVisitorsNum) minVisitorsNum = weekVisitorsArr[i]
+			}
+			return minVisitorsNum
+		}
+		function getNumWithMaxVisitors(weekVisitorsArr) {
+			let maxVisitorsNum = weekVisitorsArr[0]
+			for (let i = 1; i < weekVisitorsArr.length; i++) {
+				if (weekVisitorsArr[i]>maxVisitorsNum) maxVisitorsNum = weekVisitorsArr[i]
+			}
+			return maxVisitorsNum
+		}
+		function getMinMaxVisitorsDays(weekVisitorsArr, visitorsNum) {
+			let arr = []
+			for (let i = 0; i < weekVisitorsArr.length; i++) {
+				if(weekVisitorsArr[i] === visitorsNum)
+				arr.push(i+1)
+			}
+			return arr
+		}
+		function getTotalVisitorsNumOnWorkingDays(weekVisitorsArr) {
+			let sum = 0
+			for (let i = 0; i < weekVisitorsArr.length - 2; i++) {
+				sum+=weekVisitorsArr[i]
+			}
+			return sum
+		}
+		function getTotalVisitorsNumOnWeekends(weekVisitorsArr) {
+			let sum = 0
+			for (let i = 5; i < weekVisitorsArr.length; i++) {
+				sum+=weekVisitorsArr[i]
+			}
+			return sum
+		}
+		let dayNumWithUpTo20Visitors = getDayNumWithUpTo20Visitors(weekVisitorsArr)
+		let numWithMinVisitors = getNumWithMinVisitors(weekVisitorsArr)
+		let numWithMaxVisitors = getNumWithMaxVisitors(weekVisitorsArr)
+		let minVisitorsDays = getMinMaxVisitorsDays(weekVisitorsArr, numWithMinVisitors)
+		let maxVisitorsDays = getMinMaxVisitorsDays(weekVisitorsArr, numWithMaxVisitors)
+		let totalVisitorsNumOnWorkingDays = getTotalVisitorsNumOnWorkingDays(weekVisitorsArr)
+		let totalVisitorsNumOnWeekends = getTotalVisitorsNumOnWeekends(weekVisitorsArr)
+		document.write(`
+		Дні, коли кількість відвідувачів була меншою за 20 =${dayNumWithUpTo20Visitors}<br>
+		Дні, коли кількість відвідувачів була мінімальною =${minVisitorsDays}<br>
+		Дні, коли кількість відвідувачів була максимальною =${maxVisitorsDays}<br>
+		Загальна кількість клієнтів у робочі дні = ${totalVisitorsNumOnWorkingDays}<br>
+		Загальна кількість клієнтів на вихідних = ${totalVisitorsNumOnWeekends}
+		`)
+	</script>
+</body>
+
+</html>
